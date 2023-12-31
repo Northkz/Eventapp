@@ -1,0 +1,19 @@
+import React from "react";
+import "./FavoriteLocations.css";
+
+const FavoriteLocations = ({ favoriteLocations, onAddFavorite }) => {
+  return (
+    <div className="FavoriteLocations">
+      <h2>Favorite Locations</h2>
+      <ul>
+        {favoriteLocations.map((location) => (
+          <li key={location.id}>
+            {location.name} - <button onClick={() => onAddFavorite(location)}>Add to Favorites</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default FavoriteLocations;

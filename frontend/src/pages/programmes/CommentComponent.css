@@ -1,0 +1,99 @@
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+.card h4 {
+    margin-bottom: 20px;
+}
+
+.card p {
+    margin-bottom: 10px;
+}
+
+.card form {
+    display: flex;
+    flex-direction: column;
+}
+
+.card form textarea,
+.card form input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.card form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.card form button:hover {
+    background-color: #0056b3;
+}
+
+.comment {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.comment-user {
+    font-weight: bold;
+}
+
+.comment-rating {
+    color: #007bff;
+}
+
+
+.comment-form {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.comment-input {
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.rating-input-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.rating-input {
+    width: 50px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    justify-content: center;
+    text-align: center;
+    align-self: center;
+}
+
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}

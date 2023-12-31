@@ -1,0 +1,42 @@
+.background-gradient {
+    background:
+        linear-gradient(to right, rgba(79, 147, 214, 0.5), rgba(149, 114, 204, 0.5), rgba(236, 111, 154, 0.5)),
+        url('https://cdn.i-scmp.com/sites/default/files/d8/images/2023/10/30/3b4a110a-f249-4808-bbfc-0ee0634eef0a.jpeg');
+    background-size: cover;
+    height: 100vh;
+    /* define how the background are blended */
+    background-blend-mode: multiply;
+
+    /* make background constantly moving */
+    animation: slide 20s ease infinite;
+}
+
+
+.explore-button {
+    background-color: #fff;
+    color: #000;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.explore-button:hover {
+    transform: scale(1.02);
+    background-color: #000;
+
+    color: white;
+}
+
+.explore-button:active {
+    transform: scale(0.98);
+}
+
+.container {
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 10px;
+    align-items: center;
+}
