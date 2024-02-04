@@ -1,0 +1,107 @@
+import React, { useState, useEffect } from "react";
+
+const EventTable = ({ token }) => {
+  const [events, setEvents] = useState([]);
+  const [sortAscending, setSortAscending] = useState(true);
+  const [maxPrice, setMaxPrice] = useState(100);
+  const [originalVenues, setOriginalVenues] = useState([]);
+
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const apiUrl = process.env.REACT_APP_API_URL;
+        const response = await fetch(`${apiUrl}/api/event/?id`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || "Failed to fetch event data");
+        }
+
+        const data = await response.json();
+        console.log("event Data:", data); // Log the data to inspect the response
+        setEvents(data.events);
+      } catch (error) {
+        console.error("Error fetching venues:", error.message);
+      }
+    };
+
+
+    
+    if (token) {
+      fetchEvents();
+    }
+  }, [token]); // Include userToken in the dependency array
+
+
+  const handleSortByPrice = () => {
+    const sortedEvents = [...events];
+
+    if (sortAscending) {
+      sortedEvents.sort((a, b) => a.price - b.price);
+    } else {
+      sortedEvents.sort((a, b) => b.price - a.price);
+    }
+
+    setEvents(sortedEvents);
+    setSortAscending(!sortAscending);
+  };
+
+  const handleMaxPriceChange = (e) => {
+    const value = parseFloat(e.target.value);
+    setMaxPrice(value);
+  };
+
+  const filteredEvents = events.filter((event) => {
+    if (maxPrice === "" || maxPrice === null) {
+      return true; // Show all events if maxPrice is empty or null
+    }
+    return event.price <= maxPrice;
+  });
+
+
+  return (
+    <div>
+      <label>
+        Max Price:
+        <input
+          type="number"
+          value={maxPrice}
+          onChange={handleMaxPriceChange}
+        />
+      </label>
+      <h2>Event List</h2>
+      <button onClick={handleSortByPrice}>
+        Sort by Price {sortAscending ? "Ascending" : "Descending"}
+      </button>
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Venue ID</th>
+            <th>Price</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredEvents.map((event) => (
+            <tr key={event.id}>
+              <td>{event.id}</td>
+              <td>{event.title}</td>
+              <td>{event.venue_id}</td>
+              <td>{event.price}</td>
+              <td>{event.date}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default EventTable;

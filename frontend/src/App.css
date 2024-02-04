@@ -1,0 +1,312 @@
+.User {
+  height: 100vh;
+  width: 100vw;
+}
+
+.map-container {
+  height: 100%;
+  width: 100%;
+}
+
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: #f4f4f4;
+  font-family: 'Nunito', sans-serif;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+/* Toast notification styles */
+.toast {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  background: #6e45e2;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.toast button {
+  background: transparent;
+  border: none;
+  color: white;
+}
+
+.btn {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {}
+
+.responsive-btn {
+  transition: all 0.3s;
+  padding: 10px 15px;
+}
+
+.responsive-btn.btn-primary:hover:not(:disabled) {
+  transform: scale(1.02);
+  background-color: #6e45e2;
+  color: white;
+  transition: all 0.3s;
+}
+
+/* rainbow */
+@keyframes rainbow-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Spread out the flex items */
+  padding: 10px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  z-index: 100;
+
+
+}
+
+.top-bar .logo {
+  font-size: 1em;
+  /* Appropriate size for logo */
+  font-weight: 600;
+  /* Medium font weight */
+
+}
+
+.top-bar .nav {
+  display: flex;
+  justify-content: left;
+  /* Center the navigation links */
+  flex-grow: 1;
+  /* Allow navigation to take up available space */
+}
+
+.top-bar .nav-link {
+  margin: 0 2px;
+  font-size: 0.9em;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: transparent;
+  border-width: 0 0 2px 0;
+  /* Slightly smaller font size for a minimal look */
+  color: #8b8b8b;
+  /* Dark gray for minimal look */
+  transition: color 0.3s ease-out;
+}
+
+.top-bar .nav-link:hover {
+  /*bold text on hover*/
+  color: black;
+  background-color: rgb(223, 223, 223);
+  transition: all 0.3s ease-out;
+}
+
+/* bold text to active nav link */
+.top-bar .nav-link.active {
+  border-color: transparent transparent #6e45e2 transparent;
+  border-radius: 10px 10px 0 0;
+  border-width: 0 0 2px 0;
+  color: indigo;
+  /* transition: all 0.3s, except border-radius */
+  transition: all 0.3s ease-out, border-radius 0.1s ease-out;
+
+}
+
+.top-bar .user-info {
+  font-size: 1em;
+}
+
+.top-bar .not-logged-in .nav-link {
+  color: #6e45e2;
+  /* Highlight color for login link */
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  /* center vertically */
+  display: none;
+  /* Hidden by default */
+}
+
+.login-btn {
+  margin-left: auto;
+  display: flex;
+  /* Push login button to the right */
+}
+
+.btn-auth-small {
+  background-color: transparent;
+  background-size: 0% 100%;
+  border: none;
+  border-radius: 8px;
+  color: rgb(45, 0, 82);
+  display: inline-block;
+  font-size: 0.8rem;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.5s;
+}
+
+.btn-auth-small:hover {
+  background-color: #c8c8c8;
+  transform: scale(1.02);
+  color: rgb(0, 0, 0);
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.7));
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  transition: all 1s;
+}
+
+.btn-auth-small:active {
+  background-color: #e2e2e2;
+  transition: background-size 0
+}
+
+/* Responsive Design */
+@media (max-width: 920px) {
+  .top-bar {
+    display: block;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /* Ensures items are spread out */
+    flex-wrap: wrap;
+    /* Allows items to wrap onto the next line */
+    padding: 16px;
+  }
+
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+    transition: all 0.3s;
+    border-radius: 5px;
+    /* Show only on small screens */
+  }
+
+  .menu-toggle:hover {
+    transform: scale(1.1);
+    background-color: #dddddd;
+    /* Slightly larger on hover */
+  }
+
+  .top-bar .logo {
+    font-size: 1em;
+    /* Adjust logo size */
+  }
+
+  .top-bar .nav {
+    flex-direction: row;
+    /* Adjust nav layout */
+    justify-content: center;
+    display: none;
+    /* Keep nav as flex for horizontal alignment */
+  }
+
+  .top-bar .nav.open {
+    display: flex;
+    /* Show nav on small screens */
+    flex-direction: row;
+    /* Stack items vertically */
+  }
+
+  .top-bar .nav-link {
+    /* Adjust nav link spacing */
+    font-size: 0.8em;
+    /* Adjust font size */
+    display: block;
+    /* Stack the links vertically */
+    /* Add some padding */
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .top-bar .user-info {
+    font-size: 0.8em;
+    /* Adjust user info font size */
+  }
+
+  .btn-auth-small {
+    font-size: 0.7rem;
+    /* Adjust button font size */
+  }
+
+  .login-btn {
+    margin-left: auto;
+    display: flex;
+    font-size: 0.8em;
+
+    /* Push login button to the right */
+  }
+}
+
+/* interactive button: outline */
+.btn-outline {
+  background: none;
+  border: 2px solid #6e45e2;
+  border-radius: 5px;
+  color: #6e45e2;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 10px 15px;
+  transition: all 0.3s;
+}
+
+.btn-outline:hover {
+  background-color: #6e45e2;
+  color: white;
+  transition: all 0.3s;
+}
+
+.btn-outline:active {
+  background-color: #300089;
+  color: white;
+  transition: all 0.3s;
+}
+
+.login-button {
+  height: 64px;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.login-button.btn-primary:hover:not(:disabled) {
+  transform: scale(1.02);
+  background-color: #6e45e2;
+}
+
+.login-button.btn-success {
+  transform: scale(1);
+  cursor: default;
+
+}

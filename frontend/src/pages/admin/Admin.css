@@ -1,0 +1,63 @@
+/* Admin Page Layout */
+.admin {
+  display: flex;
+}
+
+.admin__sidebar {
+  min-width: 250px;
+  background: #f8f9fa;
+  /* Light background for sidebar */
+}
+
+.admin__content {
+  flex-grow: 1;
+  padding: 20px;
+  background: white;
+  /* Main content background */
+}
+
+/* Shared Component Styles */
+.content {
+  /* Shared styles for UserInfo, EventInfo, MainPage */
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.content h2,
+.content h3 {
+  color: #6e45e2;
+  text-align: left;
+  /* Header color */
+}
+
+.content form {
+  margin-top: 20px;
+}
+
+.content form div {
+  margin-bottom: 15px;
+}
+
+.content form input,
+.content form button {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  width: 100%;
+}
+
+.content form button {
+  background-color: #6e45e2;
+  color: white;
+  cursor: pointer;
+}
+
+.content form button:hover {
+  background-color: #5940ba;
+}
+
+.alert-dismissible {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+}

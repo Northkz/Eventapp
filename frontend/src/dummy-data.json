@@ -1,0 +1,55 @@
+{
+  "events": {
+    "last_update": "2021-09-01 12:00:00",
+    "event": [
+      {
+        "id": 154960,
+        "title": {
+          "chinese": "「冬日開懷集」系列：七指雜技團《奇幻飛躍旅人》- 工作坊（一）- 深入體驗雜技技巧（加拿大）",
+          "english": "'Cheers!' Series: Passengers - Workshop I - Delve into the intermediate acrobatic movements by The 7 Fingers (Canada)"
+        },
+        "venue": "36311771",
+        "date_time": {
+          "chinese": "2023年11月30日 (四) 晚上8:00",
+          "english": "30 Nov 2023 (Thu) 8:00pm"
+        },
+        "description": {
+          "chinese": "本工作坊專為希望加深對雜技技巧的瞭解，並提高技術水平的學員而設計，工作坊會測試你的身體協調性和靈活度，學習中高程度的技巧，讓你加深對雜技的認識！參加者應具有基本的相關經驗。",
+          "english": "Join The 7 Fingers for whom wishes to deepen their knowledge and technical level in the acrobatic discipline! The artists will test your body coordination and flexibility, and you will learn intermediate-advanced level skills to enhance your knowledge of acrobatic arts! Participants should have basic relevant experience."
+        },
+        "presenter": {
+          "chinese": "康樂及文化事務署主辦",
+          "english": "Presented by Leisure and Cultural Services Department"
+        },
+        "price": {
+          "chinese": "$150",
+          "english": "$150"
+        }
+      },
+      {
+        "id": 123456,
+        "title": {
+          "chinese": "示例活動 2（中文標題）",
+          "english": "Sample Event 2 (English Title)"
+        },
+        "venue": "12345678",
+        "date_time": {
+          "chinese": "2023年12月1日 (五) 下午3:00",
+          "english": "1 Dec 2023 (Fri) 3:00pm"
+        },
+        "description": {
+          "chinese": "這是示例活動 2 的中文描述。",
+          "english": "This is the English description for Sample Event 2."
+        },
+        "presenter": {
+          "chinese": "主辦單位 2",
+          "english": "Presenter 2"
+        },
+        "price": {
+          "chinese": "免費",
+          "english": "Free"
+        }
+      }
+    ]
+  }
+}

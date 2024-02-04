@@ -1,0 +1,122 @@
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
+const LocationTable = ({ token }) => {
+  const [venues, setVenues] = useState([]);
+  const [idCounts, setIdCounts] = useState({});
+  const [sortAscending, setSortAscending] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [originalVenues, setOriginalVenues] = useState([]);
+
+  useEffect(() => {
+    const fetchVenues = async () => {
+      try {
+        const apiUrl = process.env.REACT_APP_API_URL;
+        const response = await fetch(`${apiUrl}/api/venue/?id`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || "Failed to fetch venue data");
+        }
+
+        const data = await response.json();
+        console.log("Venue Data:", data);
+
+        const idCountsCopy = { ...idCounts };
+        const uniqueVenues = [];
+
+        data.venues.forEach((venue) => {
+          if (!idCountsCopy[venue.id]) {
+            idCountsCopy[venue.id] = 1;
+            uniqueVenues.push(venue);
+          } else {
+            idCountsCopy[venue.id]++;
+          }
+        });
+
+        setVenues(uniqueVenues);
+        setIdCounts(idCountsCopy);
+        setOriginalVenues(uniqueVenues); // Initialize originalVenues
+      } catch (error) {
+        console.error("Error fetching venues:", error.message);
+      }
+    };
+
+    if (token) {
+      fetchVenues();
+    }
+  }, [token]);
+
+  const handleSortByIdCounts = () => {
+    const sortedVenues = [...venues];
+
+    sortedVenues.sort((a, b) => {
+      const countA = idCounts[a.id] || 0;
+      const countB = idCounts[b.id] || 0;
+
+      return sortAscending ? countA - countB : countB - countA;
+    });
+
+    setVenues(sortedVenues);
+    setSortAscending(!sortAscending);
+  };
+
+  const handleInputChange = (e) => {
+    const newSearchTerm = e.target.value.toLowerCase();
+    setSearchTerm(newSearchTerm);
+
+    if (newSearchTerm.trim() === "") {
+      // If search term is empty, reset to show all results
+      setVenues(originalVenues);
+    } else {
+      // Otherwise, filter based on the search term
+      const searchResult = originalVenues.filter((venue) => venue.name.toLowerCase().includes(newSearchTerm));
+      setVenues(searchResult);
+    }
+  };
+
+  return (
+    <div>
+      <h2>Location Table</h2>
+      <div>
+        <label>Search by Name:</label>
+        <input type="text" value={searchTerm} onChange={handleInputChange} placeholder="Type to search..." />
+      </div>
+      <button onClick={handleSortByIdCounts} class="btn btn-dark">
+        Sort by ID Counts {sortAscending ? "Ascending" : "Descending"}
+      </button>
+      <table className="table table-dark">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Number of Events</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {venues.map((venue) => (
+            <tr key={venue.id}>
+              <td>{venue.id}</td>
+              <td>{venue.name}</td>
+              <td>{venue.latitude}</td>
+              <td>{venue.longitude}</td>
+              <td>{idCounts[venue.id]}</td>
+              <td>
+                <Link to={`/location/${venue.id}`}>View Details</Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default LocationTable;

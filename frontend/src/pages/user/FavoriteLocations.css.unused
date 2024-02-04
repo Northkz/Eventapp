@@ -1,0 +1,18 @@
+.FavoriteLocations {
+    text-align: center; 
+    background-color: #f0f0f0; 
+    padding: 20px; 
+  }
+  
+  .FavoriteLocations h2 {
+    color: #333; 
+  }
+  
+  .FavoriteLocations ul {
+    list-style: none;
+    padding: 0; 
+  }
+  
+  .FavoriteLocations li {
+    margin-bottom: 10px; 
+  }
